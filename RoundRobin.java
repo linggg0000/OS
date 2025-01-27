@@ -21,17 +21,19 @@ public class RoundRobin extends Algorithm {
         }
         System.out.println("\n\n");
         
-        // 1. Rearrange the processes according to arrival time and burst time
+        // Sort processes by arrival time, then priority, then burst time
         for (int i = 0; i < numberOfProcesses; i++) {
             for (int j = i + 1; j < numberOfProcesses; j++) {
                 Process p1 = processList.get(i);
                 Process p2 = processList.get(j);
-                if (p1.getArrivalTime() > p2.getArrivalTime() || 
-                    (p1.getArrivalTime() == p2.getArrivalTime() && p1.getBurstTime() > p2.getBurstTime())) {
+                
+                if (p1.getArrivalTime() > p2.getArrivalTime() || // FCFS first
+                    (p1.getArrivalTime() == p2.getArrivalTime() && p1.getPriority() > p2.getPriority()) || // Lower priority number first
+                    (p1.getArrivalTime() == p2.getArrivalTime() && p1.getPriority() == p2.getPriority() && p1.getBurstTime() > p2.getBurstTime())) { // Smaller burst time first
+                    
                     // Swap processes
-                    Process temp = processList.get(i);
-                    processList.set(i, processList.get(j));
-                    processList.set(j, temp);
+                    processList.set(i, p2);
+                    processList.set(j, p1);
                 }
             }
         }
@@ -52,8 +54,6 @@ public class RoundRobin extends Algorithm {
         while (index < numberOfProcesses || !readyQueue.isEmpty()){
             
             // Add processes that arrived at or before currentTime to newArrivals queue
-            // For 1st iteration , it's in charge of adding first process(es) into readyQueue
-            // For subsequent iterations, it's to ensure unfinished processes get to reenter readyQueue
             while ( index < numberOfProcesses && processList.get(index).getArrivalTime() <= currentTime) {
                 newArrivals.add(processList.get(index));
                 index++;
@@ -127,4 +127,5 @@ public class RoundRobin extends Algorithm {
         System.out.println(timeLine.append(currentTime));   // Print timeline
         System.out.println("\n\n");
     }
+    
 }
