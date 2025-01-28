@@ -108,6 +108,9 @@ public class RoundRobin extends Algorithm {
         
         // Print the Gantt Chart
         printGanttChart(currentTime);   // pass the last process's end time
+    
+        // Print summary table
+        printSummaryTable();
     }
     
 }
