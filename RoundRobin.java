@@ -4,9 +4,9 @@ public class RoundRobin extends Algorithm {
     private int timeQuantum;
     
     // Constructor
-    public RoundRobin (List<Process> processList, int timeQuantum){
+    public RoundRobin (List<Process> processList){
         super(processList); // initialise with unsorted processList first
-        this.timeQuantum = timeQuantum;
+        this.timeQuantum = 3;   // predefined to 3
     }
     
     @Override
@@ -97,6 +97,8 @@ public class RoundRobin extends Algorithm {
             }
             
             // If the process executed is unfinished, add it to the back of the new arrivals
+            // The nature of Round Robin that always alternates processes
+            // ensures that "hungry" processes automatically get priority to execute
             if (currentProcess.getRemainingTime() > 0) {
                 readyQueue.add(currentProcess);
             } else {
@@ -104,28 +106,11 @@ public class RoundRobin extends Algorithm {
             }
         }
         
-        // Print Gantt Chart & Time Line after full execution
-        StringBuilder ganttTop = new StringBuilder();
-        StringBuilder ganttMiddle = new StringBuilder();
-        StringBuilder ganttBottom = new StringBuilder();
-        
-        for (String process : completedProcesses) {
-            ganttTop.append("+--------");
-            ganttMiddle.append("|   ").append(process).append("   ");
-            ganttBottom.append("+--------");
-        }
-        
-        // Closing lines
-        ganttTop.append("+");
-        ganttMiddle.append("|");
-        ganttBottom.append("+");
-        
-        System.out.println("Gantt Chart:");
-        System.out.println(ganttTop);
-        System.out.println(ganttMiddle);
-        System.out.println(ganttBottom);
-        System.out.println(timeLine.append(currentTime));   // Print timeline
-        System.out.println("\n\n");
+        // Print the Gantt Chart
+        printGanttChart(currentTime);   // pass the last process's end time
+    
+        // Print summary table
+        printSummaryTable();
     }
     
 }
