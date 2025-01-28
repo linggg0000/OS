@@ -12,10 +12,7 @@ public class Simulator
         processes.add(new Process ("P4", 7, 6, 1));
         processes.add(new Process ("P5", 8, 6, 1));
         
-  
-        int timeQuantum = 3;
-        
-        RoundRobin rr = new RoundRobin(processes, timeQuantum);
+        RoundRobin rr = new RoundRobin(processes);
         rr.runAlgorithm();
     }
 }
