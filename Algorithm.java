@@ -41,5 +41,52 @@ abstract public class Algorithm {
         System.out.println("\n\n");
     }
         
-    
+
+    public void printSummaryTable() {
+        System.out.println("Summary Table:");
+        System.out.println("+------+--------------+--------------+----------+--------------+-------------------+----------------+");
+        System.out.println("|      | Arrival Time |  Burst Time  | Priority |  Finish Time |  Turnaround Time  |  Waiting Time  |");
+        System.out.println("+------+--------------+--------------+----------+--------------+-------------------+----------------+");
+        
+        
+        double totalTurnaroundTime = 0 ; // accumulator for total turnaround time
+        double totalWaitingTime = 0 ; // accumulator for total waiting time
+        int n = 0;  // track process count
+        
+        for (Process p : processList ){
+            // Calculate turnaround time
+            int turnaroundTime = p.getFinishTime() - p.getArrivalTime();
+            
+            // Calculate waiting time
+            int waitingTime = turnaroundTime - p.getBurstTime();
+            
+            System.out.println(String.format(
+                "| %-4s | %-12d | %-12d | %-8d | %-12d | %-17d | %-14d |", 
+                p.getProcessName(), 
+                p.getArrivalTime(), 
+                p.getBurstTime(), 
+                p.getPriority(), 
+                p.getFinishTime(), 
+                turnaroundTime, 
+                waitingTime
+            ));
+        
+            // Accumulate totals and increment process count
+            totalTurnaroundTime += turnaroundTime;  
+            totalWaitingTime += waitingTime;   
+            n++;    
+        }
+        
+        // Closing line of summary table
+        System.out.println("+------+--------------+--------------+----------+--------------+-------------------+----------------+");
+
+        // Print totals and averages below the table
+        System.out.println("\n\n");
+        System.out.printf("Total turnaround time: %.2f%n", totalTurnaroundTime);
+        System.out.printf("Average turnaround time: %.2f%n", totalTurnaroundTime / n);
+        
+        System.out.println("\n\n");
+        System.out.printf("Total waiting time: %.2f%n", totalWaitingTime);
+        System.out.printf("Average waiting time: %.2f%n", totalWaitingTime / n);
+    }
 }
