@@ -88,7 +88,7 @@ public class Simulator
                 algorithm = new SJN(processes);
                 break;
             case 4:
-                algorithm = new SJN(processes);
+                algorithm = new NPP(processes);
                 break;
             default: 
                 System.out.println("Invalid choice");
