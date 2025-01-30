@@ -77,13 +77,6 @@ public class SRT extends Algorithm {
     }
 
     public void sort() {
-        // Print unsorted processes
-        System.out.println("Unsorted: ");
-        for (Process p : processList) {
-            System.out.print(p.getProcessName() + ", ");
-        }
-        System.out.println("\n\n");
-
         List<Process> p = new ArrayList<>();
         p.addAll(processList);
 
@@ -104,13 +97,6 @@ public class SRT extends Algorithm {
         }
 
         processList = p;
-
-        // Print sorted processes
-        System.out.println("Sorted: ");
-        for (Process process : processList) {
-            System.out.print(process.getProcessName() + ", ");
-        }
-        System.out.println("\n\n");
     }
 
     public void printGantt() {
