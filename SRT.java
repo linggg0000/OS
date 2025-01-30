@@ -71,8 +71,7 @@ public class SRT extends Algorithm {
             currentTime++;
         }
 
-        timeLine.append(String.format("%-9s", currentTime)); // record final time
-        printGantt();
+        printGanttChart(currentTime);
         printSummaryTable();
     }
 
@@ -97,30 +96,6 @@ public class SRT extends Algorithm {
         }
 
         processList = p;
-    }
-
-    public void printGantt() {
-        StringBuilder ganttTop = new StringBuilder();
-        StringBuilder ganttMiddle = new StringBuilder();
-        StringBuilder ganttBottom = new StringBuilder();
-
-        for (String process : completedProcesses) {
-            ganttTop.append("+--------");
-            ganttMiddle.append("|   ").append(process).append("   ");
-            ganttBottom.append("+--------");
-        }
-
-        // Closing lines
-        ganttTop.append("+");
-        ganttMiddle.append("|");
-        ganttBottom.append("+");
-
-        System.out.println("Gantt Chart:");
-        System.out.println(ganttTop);
-        System.out.println(ganttMiddle);
-        System.out.println(ganttBottom);
-        System.out.println(timeLine);   // print timeline
-        System.out.println("\n\n");
     }
 }
 
