@@ -10,8 +10,12 @@ public class Simulator
         int numberOfProcesses = 0;
         
         while (true) {
+            System.out.println("\n═══════════════════════════════════════════════════════");
+            System.out.println("                    CPU SCHEDULING SIMULATOR                 ");
+            System.out.println("═══════════════════════════════════════════════════════");
+            
             try {
-                System.out.print("Enter the number of processes (3-10 ): ");
+                System.out.print("Enter the number of processes (3-10): ");
                 numberOfProcesses = scanner.nextInt();
                 scanner.nextLine(); // Clear invalid input from the scanner
                 
@@ -28,28 +32,30 @@ public class Simulator
             }
         }
 
+        System.out.println("\n═══════════════════════════════════════════════════════");
+        System.out.println("                     PROCESS DETAILS INPUT                   ");
+        System.out.println("═══════════════════════════════════════════════════════");
         
         while (true) {
             for (int num = 0; num < numberOfProcesses; num++)
             {
-            
-                System.out.println("-----------------------------------------");
-                System.out.println("Details for process P" + num);
-                System.out.println("-----------------------------------------");
+                System.out.println("\nProcess P" + num);
             
                 try {
-                    System.out.print("Process Arrival Time: ");
+                    System.out.print("  Arrival Time    : ");
                     int arrivalTime = scanner.nextInt();
                     scanner.nextLine(); // Clear invalid input from the scanner
                     
-                    System.out.print("Process Burst Time: ");
+                    System.out.print("  Burst Time      : ");
                     int burstTime = scanner.nextInt();
                     scanner.nextLine(); // Clear invalid input from the scanner
                     
-                    System.out.print("Process Priority: ");
+                    System.out.print("  Priority        : ");
                     int priority = scanner.nextInt();
                     scanner.nextLine(); // Clear invalid input from the scanner
     
+                    System.out.println("\n-------------------------------------------------------------");
+
                     processes.add(new Process("P"+num, arrivalTime, burstTime, priority));
                 }
                 catch (InputMismatchException e) { // Handle non integer input: string
@@ -63,13 +69,14 @@ public class Simulator
     }
     
     public void algorithmMenu() {
-        System.out.println("--------------------------");
-        System.out.println("Chose an scheduling algorithm: ");
+        System.out.println("\n═══════════════════════════════════════════════════════");
+        System.out.println("                   CHOOSE SCHEDULING ALGORITHM               ");
+        System.out.println("═══════════════════════════════════════════════════════");
         System.out.println("1. Round Robin with Quantum 3");
         System.out.println("2. Shortest Remaining Time (SRT)");
         System.out.println("3. Shortest Job Next (SJN)");
         System.out.println("4. Non-Preemptive Priority");
-        System.out.println("--------------------------");
+        System.out.println("-------------------------------------------------------------");
         System.out.print("Please enter your choice: ");
         
         int choice = scanner.nextInt();
