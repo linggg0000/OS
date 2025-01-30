@@ -4,7 +4,6 @@ import java.util.*;
 public class SRT extends Algorithm {
     public SRT(List<Process> processList) {
         super(processList);
-        System.out.println("construc");
     }
 
     @Override
@@ -74,6 +73,7 @@ public class SRT extends Algorithm {
 
         timeLine.append(String.format("%-9s", currentTime)); // record final time
         printGantt();
+        printSummaryTable();
     }
 
     public void sort() {
@@ -100,7 +100,6 @@ public class SRT extends Algorithm {
     }
 
     public void printGantt() {
-        System.out.println("entered");
         StringBuilder ganttTop = new StringBuilder();
         StringBuilder ganttMiddle = new StringBuilder();
         StringBuilder ganttBottom = new StringBuilder();
