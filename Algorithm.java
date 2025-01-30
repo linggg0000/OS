@@ -33,17 +33,23 @@ abstract public class Algorithm {
         ganttMiddle.append("|");
         ganttBottom.append("+");
         
-        System.out.println("Gantt Chart:");
+        System.out.println("\n═══════════════════════════════════════════════════════");
+        System.out.println("                          GANTT CHART                        ");
+        System.out.println("═══════════════════════════════════════════════════════\n");
+            
         System.out.println(ganttTop);
         System.out.println(ganttMiddle);
         System.out.println(ganttBottom);
         System.out.println(timeLine.append(lastEndTime));   // Print timeline
-        System.out.println("\n\n");
+        System.out.println();
     }
         
 
     public void printSummaryTable() {
-        System.out.println("Summary Table:");
+        System.out.println("\n═══════════════════════════════════════════════════════");
+        System.out.println("                         SUMMARY TABLE                       ");
+        System.out.println("═══════════════════════════════════════════════════════\n");
+            
         System.out.println("+------+--------------+--------------+----------+--------------+-------------------+----------------+");
         System.out.println("|      | Arrival Time |  Burst Time  | Priority |  Finish Time |  Turnaround Time  |  Waiting Time  |");
         System.out.println("+------+--------------+--------------+----------+--------------+-------------------+----------------+");
@@ -81,11 +87,11 @@ abstract public class Algorithm {
         System.out.println("+------+--------------+--------------+----------+--------------+-------------------+----------------+");
 
         // Print totals and averages below the table
-        System.out.println("\n\n");
+        System.out.println("\n");
         System.out.printf("Total turnaround time: %.2f%n", totalTurnaroundTime);
         System.out.printf("Average turnaround time: %.2f%n", totalTurnaroundTime / n);
         
-        System.out.println("\n\n");
+        System.out.println("\n");
         System.out.printf("Total waiting time: %.2f%n", totalWaitingTime);
         System.out.printf("Average waiting time: %.2f%n", totalWaitingTime / n);
     }

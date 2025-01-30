@@ -14,6 +14,11 @@ public class RoundRobin extends Algorithm {
         
         int numberOfProcesses = processList.size();
         
+        System.out.println("\n═══════════════════════════════════════════════════════");
+        System.out.println("                        PROCESS ORDERING                     ");
+        System.out.println("═══════════════════════════════════════════════════════\n");
+            
+        
         // Print unsorted processes
         System.out.println("Unsorted: ");
         for (Process p : processList){
