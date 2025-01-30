@@ -82,7 +82,7 @@ public class Simulator
                 algorithm = new RoundRobin(processes);
                 break;
             case 2:
-                algorithm = new SJN(processes);
+                algorithm = new SRT(processes);
                 break;
             case 3:
                 algorithm = new SJN(processes);
@@ -100,24 +100,4 @@ public class Simulator
             algorithm.runAlgorithm();
         }
     }
-    
-
-    /*
-    public static void main (String args[]){
-        List<Process> processes = new ArrayList<>();
-        
-        processes.add(new Process ("P0", 0, 6, 3));
-        processes.add(new Process ("P1", 1, 4, 3));
-        processes.add(new Process ("P2", 5 , 6, 1));
-        processes.add(new Process ("P3", 6, 6, 1));
-        processes.add(new Process ("P4", 7, 6, 5));
-        processes.add(new Process ("P5", 8, 6, 6));
-        
-        RoundRobin rr = new RoundRobin(processes);
-        rr.runAlgorithm();
-        
-        SJN sjn = new SJN(processes);
-        sjn.runAlgorithm();
-    }
-    */
 }

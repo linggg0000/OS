@@ -1,14 +1,15 @@
 import java.util.*;
 
-public class PreemptiveSJF extends Algorithm {
-    public PreemptiveSJF(List<Process> processList) {
+// Preemptive SJF
+public class SRT extends Algorithm {
+    public SRT(List<Process> processList) {
         super(processList);
         System.out.println("construc");
     }
 
     @Override
     public void runAlgorithm() {
-        sort();
+        sort(); // sort process list
 
         int currentTime = 0;
         int minTime = Integer.MAX_VALUE;
@@ -23,17 +24,12 @@ public class PreemptiveSJF extends Algorithm {
             if (selected != null) {
                 int remainingTime = selected.getRemainingTime();
                 selected.setRemainingTime(--remainingTime);
-//                System.out.println("-- " + currentTime + ": " + selected.getProcessName() + ", " + selected.getRemainingTime());
-
 
                 // if process completed
                 if (selected.getRemainingTime() == 0) {
-//                    completedProcesses.add(selected.getProcessName());
                     selected.setFinishTime(currentTime);
-//                    timeLine.append(String.format("%-9s", currentTime));
                     completed[selectedIndex] = true;
                     totalCompleted++;
-//                    System.out.println("completed " + currentTime + ": " + selected.getProcessName() + ", " + selectedIndex + ", " + completed[selectedIndex]);
                     selected = null;
                     selectedIndex = -1;
                     minTime = Integer.MAX_VALUE; // reset minTime
@@ -55,15 +51,10 @@ public class PreemptiveSJF extends Algorithm {
 
                 // if shorter job
                 if (p.getRemainingTime() < minTime) {
-//                    System.out.println("check " + currentTime + ": " + p.getProcessName() + ", " + p.getRemainingTime() + ", " + completed[i]);
                     minTime = p.getRemainingTime(); // new job time
-//                    if(selected!=null)
-//                        System.out.println("selected: " + selected.getProcessName());
-//                    System.out.println("p: " + p.getProcessName());
+
                     if (p != selected) // new process selected
                     {
-//                        if(selected != null)
-//                            System.out.println("ori: " + selected.getProcessName());
                         selected = p; // new selected process index
                         selectedIndex = i;
                         changed = true; // process changed
@@ -74,25 +65,20 @@ public class PreemptiveSJF extends Algorithm {
 
             // a new process is selected
             if (changed) {
-//                System.out.println("chged: " + selected.getProcessName());
                 completedProcesses.add(selected.getProcessName());
                 timeLine.append(String.format("%-9s", currentTime));
             }
 
             currentTime++;
-            //p0, p1, p3, p4, p0, p2, p5
-            //0 1 5 8 9 14 20 27
         }
 
-        timeLine.append(String.format("%-9s", currentTime));
-//        System.out.println("print");
+        timeLine.append(String.format("%-9s", currentTime)); // record final time
         printGantt();
-//        System.out.println("end");
     }
 
     public void sort() {
         // Print unsorted processes
-        System.out.println("Unsorted: "); // flw rr************
+        System.out.println("Unsorted: ");
         for (Process p : processList) {
             System.out.print(p.getProcessName() + ", ");
         }
@@ -148,41 +134,9 @@ public class PreemptiveSJF extends Algorithm {
         System.out.println(ganttTop);
         System.out.println(ganttMiddle);
         System.out.println(ganttBottom);
-        System.out.println(timeLine);   // Print timeline
+        System.out.println(timeLine);   // print timeline
         System.out.println("\n\n");
     }
 }
 
-//    public int partition(int l, int h)
-//    {
-//        int pivot = h/2; // take middle element as pivot
-//        int i = l;
-//        int j = h;
-////        List<Process> p = new ArrayList<Process>(); // create a copy of processList
-////        p.addAll(processList);
-//        List<Process> p = processList;
-//
-//        while(i<j)
-//        {
-//            while(p.get(i).getArrivalTime() < p.get(pivot).getArrivalTime())
-//            {
-//                i++;
-//            }
-//
-//            while(p.get(j).getArrivalTime() > p.get(pivot).getArrivalTime())
-//            {
-//                j--;
-//            }
-//
-//            if(i<j)
-//            {
-//                Process temp = p.get(i);
-//                p.set(i, p.get(j));
-//                p.set(j, temp);
-//            }
-//        }
-//        Process temp = p.get(j);
-//
-//        return j;
-//    }
-//}
+
