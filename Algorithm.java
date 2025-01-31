@@ -65,6 +65,8 @@ abstract public class Algorithm {
             
             // Calculate waiting time
             int waitingTime = turnaroundTime - p.getBurstTime();
+            if (waitingTime < 0)
+                waitingTime = 0;
             
             System.out.println(String.format(
                 "| %-4s | %-12d | %-12d | %-8d | %-12d | %-17d | %-14d |", 
