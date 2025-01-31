@@ -14,18 +14,6 @@ public class RoundRobin extends Algorithm {
         
         int numberOfProcesses = processList.size();
         
-        System.out.println("\n═══════════════════════════════════════════════════════");
-        System.out.println("                        PROCESS ORDERING                     ");
-        System.out.println("═══════════════════════════════════════════════════════\n");
-            
-        
-        // Print unsorted processes
-        System.out.println("Unsorted: ");
-        for (Process p : processList){
-            System.out.print(p.getProcessName() + ", ");
-        }
-        System.out.println("\n\n");
-        
         // Sort processes by arrival time, then priority, then burst time
         for (int i = 0; i < numberOfProcesses; i++) {
             for (int j = i + 1; j < numberOfProcesses; j++) {
@@ -42,14 +30,6 @@ public class RoundRobin extends Algorithm {
                 }
             }
         }
-        
-        // Print sorted processes
-        System.out.println("Sorted: ");
-        for (Process p : processList){
-            System.out.print(p.getProcessName() + ", ");
-        }
-        System.out.println("\n\n");
-        
         
         int currentTime = 0;   // Timer
         int index = 0;         // Pointer for sorted processList
