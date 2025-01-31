@@ -4,7 +4,7 @@ public class Process {
     private int arrivalTime;
     private int burstTime;
     private int priority;
-    private int remainingTime;  // initialized to = burstTime后来慢慢扣
+    private int remainingTime;
     private int finishTime;
     
     // constructor
@@ -15,7 +15,7 @@ public class Process {
         this.burstTime = burstTime;
         this.priority = priority;
         
-        // remainingTime initialized to burstTime at creation of process object
+        // remainingTime initialised to burstTime at creation of process object
         this.remainingTime = burstTime; 
     }
     
