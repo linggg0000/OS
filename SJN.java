@@ -33,8 +33,8 @@ public class SJN extends Algorithm
         {
             completedProcesses.add(process.getProcessName());
             timeLine.append(String.format("%-9s", currentTime));
-            process.setFinishTime(currentTime);
             currentTime += process.getBurstTime();
+            process.setFinishTime(currentTime);
         }
         
         // Print the Gantt Chart
