@@ -11,17 +11,6 @@ public class SJN extends Algorithm
         
         int numberOfProcesses = processList.size();
         
-        System.out.println("\n═══════════════════════════════════════════════════════");
-        System.out.println("                        PROCESS ORDERING                     ");
-        System.out.println("═══════════════════════════════════════════════════════\n");
-        
-        // Print unsorted processes
-        System.out.println("Unsorted: ");
-        for (Process p : processList){
-            System.out.print(p.getProcessName() + ", ");
-        }
-        System.out.println("\n\n");
-        
         // 1. Rearrange the processes according to arrival time and burst time
         // will follow input sequence if SAME arrival time and SAME burst time
         for (int i = 0; i < numberOfProcesses; i++) {
@@ -37,13 +26,6 @@ public class SJN extends Algorithm
                 }
             }
         }
-        
-        // Print sorted processes
-        System.out.println("Sorted: ");
-        for (Process p : processList){
-            System.out.print(p.getProcessName() + ", ");
-        }
-        System.out.println("\n\n");
         
         int currentTime = 0;
         
